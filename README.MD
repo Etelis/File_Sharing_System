@@ -63,3 +63,22 @@ send_updates - if client requested an update, send all updates according to clie
   when reciving new update the server adds the update to all sessions to push on future update request.
   
  
+ ##Visual Explanation:
+ 
+ ![image](https://user-images.githubusercontent.com/92247226/192823574-d9183725-7c75-4cf4-8e39-dbb16afb5add.png)
+
+`RED_COLOR`: Auto-Generated ID for the client.
+`GREEN_COLOR`: The synchronized folder.
+`PURPULE_COLOR`: The server's folder consits of all the clients.
+
+
+### Auto Push To Server On New Client:
+![2022-09-28-18-37-08](https://user-images.githubusercontent.com/92247226/192826430-9b77de9d-864f-4239-8816-48671b6cadf6.gif)
+
+
+### Auto Pull On Existing Client:
+![2022-09-28-18-43-27(1)](https://user-images.githubusercontent.com/92247226/192826129-d96c571f-fe7e-498a-8791-dfbf7e7ad231.gif)
+
+### WatchDog Trigger And Push To Server:
+![2022-09-28-18-37-08(1)](https://user-images.githubusercontent.com/92247226/192826614-50e6da4c-cf9c-4ea2-a53e-8d996f3af215.gif)
+
