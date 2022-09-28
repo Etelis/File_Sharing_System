@@ -19,12 +19,12 @@ The client is being initialized; a client should provide five arguments:
 5. `ID` - client's ID
 
 The method `initialize_connection`:
-The method will check if a client has provided an ID, if so a pull request will be sent to the server requesting the files stored on the server.
-o.w a new client will be initialized and a push request will be sent to the server resulting an upload of the provided folder.
+The method will check if a client has provided an ID; if so, the client will send a pull request to the server requesting the files stored on the server.
+o.w a new client will be initialized, and the server will send a push request to the server resulting in an upload of the provided folder.
 
 #### Synchronazation with the server:
 `update_request` method:
-update_request - method is in-charge of notifying a server an update is needed with current client, happends each `TIME` interval, or triggered by watchdog module.
+update_request - method is in-charge of notifying a server an update is needed with the current client, happens each `TIME` interval, or is triggered by the watchdog module.
 
 each update consists the following: 
 1. `num_updates` the number of updates about to be transmitted.
@@ -39,28 +39,27 @@ There are several different sanarios:
 
 #### WatchDog Module:
     Python API and shell utilities to monitor file system events.
-  The watchdog module monitors the provided folder and notifies the server about a change occured in the folder.
-  for every change occured in the folder the client will notify the server of the change with the commands defined above.
+  The watchdog module monitors the provided folder and notifies the server about a change that occurred in the folder.
+  For every change that occured in the folder, the client will notify the server of the difference with the commands defined above.
   
- 
  ### Server-Side
  
  #### Connection initialization:
-The server receives a connection from the client and pasrses the `client-id` provided.
-if the ID provided is invalid the server generates new client on the cloud and transmites the generated ID back to the client for future connections.
+The server receives a connection from the client and passes the `client-id` provided.
+If the ID provided is invalid, the server generates a new client on the cloud and transmits the generated ID back to the client for future connections.
  
  1. `Client-ID` - the ID of the client (as authorization information`
  2. `Session-ID` - the current session of the client.
 
   #### Synchronazation with the client:
 `send_updates` method:
-send_updates - if client requested an update, send all updates according to client's id and session id.
-  the server keeps track of all updates occured and transmitted, for each session of the current client.
-  by receiving the update request the server transmites only the update relavent for the provided session.
+send_updates - If the client requests an update, send all updates according to the client's id and session id.
+  The server keeps track of all updates that occur and are transmitted for each session of the current client.
+  By receiving the update request, the server transmits only the update relevant to the provided session.
   
   `add_update` method:
-  add_update - add the given update to all clients with corresponding id and all possible session ids
-  when reciving new update the server adds the update to all sessions to push on future update request.
+  add_update - add the given update to all clients with the corresponding id and all possible session ids
+  when receiving a new update, the server adds the update to all sessions to push on future update requests.
   
  
  ##Visual Explanation:
